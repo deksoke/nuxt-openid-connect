@@ -8,7 +8,7 @@ export const CBT_PAGE_TEMPATE = `
 
 <body>
 
-  <h1>OIDC Callback Middle Page. Loading...</h1>
+  <h1>Loading...</h1>
 
   <script>
     const hash = window.location.hash

@@ -1,6 +1,6 @@
 {
   "name": "@taywan_kd/nuxt-openid-connect",
-  "version": "0.8.8",
+  "version": "0.8.11",
   "description": "An nuxt 3 module with OpenID-Connect(OIDC) integration.",
   "keywords": [
     "nuxt",
@@ -34,12 +34,12 @@
     "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
     "test": "vitest run",
-    "pub": "npm publish --access public"
+    "pub": "npm run prepack && npm publish --access public"
   },
   "dependencies": {
     "@nuxt/kit": "^3.11.2",
     "defu": "^6.0.0",
-    "openid-client": "6.3.4",
+    "openid-client": "5.7.0",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
