@@ -76,8 +76,7 @@ export function getDefaultBackUrl(redirectUrl: string, host: string | undefined,
   console.log('------> baseUrl:' + baseUrl)
   console.log('------> protocol:' + protocol)
 
-  return getCleanUrl(protocol + '://' + host + baseUrl + '/oidc/cbt');
-  return getCleanUrl('http://' + host + baseUrl + '/oidc/cbt?redirect=' + redirectUrl)
+  return getCleanUrl(protocol + '://' + host + baseUrl + '/oidc/cbt?redirect=' + redirectUrl);
 }
 
 export function getCleanUrl(url: string): string {
