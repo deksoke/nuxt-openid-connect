@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
   // console.log('---Callback. redirectUrl:' + redirectUrl)
   // console.log(' -- req.url:' + req.url + '   #method:' + req.method + ' #response_mode:' + responseMode)
 
-  const proto = req.headers.origin?.includes('https') ? 'https' : 'http';
+  const proto = app.protocol;
   const callbackUrl = getCallbackUrl(redirectUrl, req.headers.host, proto)
   const defCallBackUrl = getDefaultBackUrl(redirectUrl, req.headers.host, proto)
 

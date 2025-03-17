@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
 
   const { op, config } = useRuntimeConfig().openidConnect
   const redirectUrl = getRedirectUrl(req.url, baseUrl)
-  const proto = req.headers.origin?.includes('https') ? 'https' : 'http';
+  const proto = app.protocol;
   const callbackUrl = getCallbackUrl(redirectUrl, req.headers.host, proto)
   const defCallBackUrl = getDefaultBackUrl(redirectUrl, req.headers.host, proto)
 
