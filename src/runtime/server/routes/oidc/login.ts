@@ -34,7 +34,7 @@ export default defineEventHandler(async (event) => {
   console.log('  response_mode:' + responseMode + ', response_type:' + config.response_type + ', scopes:' + scopes.join(' '))
 
   const parameters = {
-    redirect_uri: op.callbackUrl,
+    redirect_uri: callbackUrl,
     response_type: config.response_type,
     response_mode: responseMode,
     nonce: sessionid,

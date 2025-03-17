@@ -67,14 +67,17 @@ export const getRedirectUrl = (uri: string | null | undefined, baseURL: string |
 }
 
 export function getCallbackUrl(redirectUrl: string, host: string | undefined): string {
-    return getDefaultBackUrl(redirectUrl, host) 
+    return getDefaultBackUrl(redirectUrl, host)
 }
 
 export function getDefaultBackUrl(redirectUrl: string, host: string | undefined): string {
   const config = useRuntimeConfig()
   const baseUrl = config.app.baseURL
-  console.log('------>baseUrl:' + baseUrl)
-  return getCleanUrl('http://' + host + baseUrl + '/oidc/cbt?redirect=' + redirectUrl)
+  console.log('------> baseUrl:' + baseUrl)
+  const protocol = config.app.protocol;
+  console.log('------> protocol:' + protocol)
+  return getCleanUrl(protocol + '://' + host + baseUrl + '/oidc/cbt');
+  // return getCleanUrl('http://' + host + baseUrl + '/oidc/cbt?redirect=' + redirectUrl)
 }
 
 export function getCleanUrl(url: string): string {
