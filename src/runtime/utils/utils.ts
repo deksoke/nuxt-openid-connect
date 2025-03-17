@@ -66,18 +66,18 @@ export const getRedirectUrl = (uri: string | null | undefined, baseURL: string |
   return cleanUrl || baseURL || '/'
 }
 
-export function getCallbackUrl(redirectUrl: string, host: string | undefined): string {
-    return getDefaultBackUrl(redirectUrl, host)
+export function getCallbackUrl(redirectUrl: string, host: string | undefined, protocol: string | undefined): string {
+    return getDefaultBackUrl(redirectUrl, host, protocol)
 }
 
-export function getDefaultBackUrl(redirectUrl: string, host: string | undefined): string {
+export function getDefaultBackUrl(redirectUrl: string, host: string | undefined, protocol: string | undefined): string {
   const config = useRuntimeConfig()
   const baseUrl = config.app.baseURL
   console.log('------> baseUrl:' + baseUrl)
-  const protocol = config.app.protocol;
   console.log('------> protocol:' + protocol)
+
   return getCleanUrl(protocol + '://' + host + baseUrl + '/oidc/cbt');
-  // return getCleanUrl('http://' + host + baseUrl + '/oidc/cbt?redirect=' + redirectUrl)
+  return getCleanUrl('http://' + host + baseUrl + '/oidc/cbt?redirect=' + redirectUrl)
 }
 
 export function getCleanUrl(url: string): string {

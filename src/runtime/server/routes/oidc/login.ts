@@ -15,8 +15,9 @@ export default defineEventHandler(async (event) => {
 
   const { op, config } = useRuntimeConfig().openidConnect
   const redirectUrl = getRedirectUrl(req.url, baseUrl)
-  const callbackUrl = getCallbackUrl(redirectUrl, req.headers.host)
-  const defCallBackUrl = getDefaultBackUrl(redirectUrl, req.headers.host)
+  const proto = req.headers.origin?.includes('https') ? 'https' : 'http';
+  const callbackUrl = getCallbackUrl(redirectUrl, req.headers.host, proto)
+  const defCallBackUrl = getDefaultBackUrl(redirectUrl, req.headers.host, proto)
 
   const issueClient = await initClient(op, req, [defCallBackUrl, callbackUrl])
   const sessionkey = config.secret
