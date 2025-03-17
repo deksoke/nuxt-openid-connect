@@ -50,6 +50,9 @@ export default defineEventHandler(async (event) => {
     // Authorization Code Flow: code -> access_token
     console.log('[CALLBACK]: has code in params, code:' + params.code + ' ,sessionid=' + sessionid)
     const tokenSet = await issueClient.callback(callbackUrl, params, { nonce: sessionid })
+    console.log('[CALLBACK]: tokenSet:', tokenSet);
+    await new Promise(f => setTimeout(f, 1000));
+
     if (tokenSet.access_token) {
       await processUserInfo(tokenSet.access_token, tokenSet, event)
     }
